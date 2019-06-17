@@ -536,6 +536,10 @@ int main(int argc, char **argv)
 			ros::Duration d1(1);
 			d1.sleep();
 			baseCmd.linear.x = 0;
+			
+			tf::Transform currentTransformation;
+			currentTransformation = getCurrentTransformation();
+			doRotation(pubTeleop, currentTransformation, toRadian(30), 1.5);
 			pubTeleop.publish(baseCmd);
 
 			feedFlag = false;
