@@ -1,0 +1,8 @@
+prefix=/home/sunny/catkin_ws/devel
+
+Name: cat_detector
+Description: Description of cat_detector
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/sunny/catkin_ws/devel/lib 
+Requires: 

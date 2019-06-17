@@ -1,0 +1,8 @@
+prefix=/home/sunny/catkin_ws/install
+
+Name: knu_ros_lecture
+Description: Description of knu_ros_lecture
+Version: 0.0.0
+Cflags: -I/home/sunny/catkin_ws/install/include
+Libs: -L/home/sunny/catkin_ws/install/lib -lknu_ros_lecture
+Requires: roscpp sensor_msgs std_msgs
