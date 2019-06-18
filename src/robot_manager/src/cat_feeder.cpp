@@ -22,10 +22,11 @@ int main(int argc, char **argv)
 	geometry_msgs::Twist baseCmd;
 	std_msgs::String msg;
 	
-	std::stringstream case0, case1, case2;
+	std::stringstream case0, case1, case2, s1;
 	case0 << "0"; //send to robot_manager
 	case1 << "1"; //send to robot_manager
 	case2 << "2"; //send to turtlebot_servermotor
+	s1 << "1";
 
 	/* turtlebot_servo_motion ) 
 			sub 2 : feed  
@@ -77,7 +78,7 @@ int main(int argc, char **argv)
 			pubTeleop.publish(baseCmd);
 
 			//feed and wait
-			msg.data = case2.str();
+			msg.data = s1.str();
 			pubFeed.publish(msg);
 			ros::Duration d3(1);
 			d3.sleep();
