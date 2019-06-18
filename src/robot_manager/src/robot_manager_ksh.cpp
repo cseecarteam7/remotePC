@@ -485,7 +485,7 @@ int main(int argc, char **argv)
 	ros::NodeHandle nhp;
 	ros::Publisher pubTeleop = nhp.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
 	ros::Publisher pubFeather = nhp.advertise<std_msgs::String>("/servo_motion", 10);
-	ros::Publisher pubReqFeed = nhp.advertise<std_msgs::String>("/req_feed", 10);
+	ros::Publisher pubFeed = nhp.advertise<std_msgs::String>("/servo_motion", 10);
 	
 	ros::NodeHandle nhs;
 	ros::Subscriber subOdom = nhs.subscribe("/odom", 100, &odomMsgCallback);
@@ -536,11 +536,21 @@ int main(int argc, char **argv)
 		/* 3. if feeding mode turned on, conditionaly request to cat_feeder */
 		// WHEN feeding mode running && obstable detected && cat detected
 		if(feedFlag == 1 && avg > 0 && avg < OBSTACLEDISTANCE && catDetectFlag == true) {
-			std_msgs::String reqmsg;
-			std::stringstream ss_reqmsg;
-			ss_reqmsg << "1";
-			reqmsg.data = ss_reqmsg.str();
-			pubReqFeed.publish(reqmsg);
+			printf("\n**********************\n [robot_manager/main]\n CAT APPROACH --> AUTO FEEDING \n **********************\n");
+
+			baseCmd.linear.x = 0;
+			baseCmd.linear.y = 0;
+			baseCmd.angular.z = 0;
+			pubTeleop.publish(baseCmd);
+
+			//feed and wait
+			std::stringstream case2;
+			case2 << "2";
+			std_msgs::String feedmsg;
+			feedmsg.data = case2.str();
+			pubFeed.publish(feedmsg);
+			ros::Duration d3(1);
+			d3.sleep();
 		}
 	
 
@@ -583,7 +593,6 @@ int main(int argc, char **argv)
 		/* 4. when cat detected, shake body or feather.*/
 		if(catDetectFlag == false){
 			automove(avg, pubTeleop);
-			printf("##### feedFlag == false #######\n\n");
 		}
 		else if(catDetectFlag == true && feedFlag == 0) {
 
