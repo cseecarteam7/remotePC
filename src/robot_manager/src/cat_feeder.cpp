@@ -14,32 +14,20 @@ using namespace std;
 int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "cat_feeder");
-	ros::NodeHandle pubNode, subNode;
-	ros::Publisher pubFeed = pubNode.advertise<std_msgs::String>("/servo_motion", 10);
-	ros::Publisher pubTeleop = pubNode.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
+	ros::NodeHandle node;
+	ros::Publisher pubFeed = node.advertise<std_msgs::String>("/servo_motion", 10);
+	ros::Publisher pubTeleop = node.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
 	ros::Rate loop_rate(10);
 	
 	geometry_msgs::Twist baseCmd;
 	std_msgs::String msg;
+	std::stringstream ss;
+	ss << "1";
+	msg.data = ss.str();
 	
-	std::stringstream case0, case1, case2, s1;
-	case0 << "0"; //send to robot_manager
-	case1 << "1"; //send to robot_manager
-	case2 << "2"; //send to turtlebot_servermotor
-	s1 << "1";
-
-	/* turtlebot_servo_motion ) 
-			sub 2 : feed  
-			sub 3 : feather
-	*/
-
-	printf("************************************************\n");
-	printf("***** INPUT NUMBER TO CONTROL FEEDING MODE *****\n");
-	printf("************************************************\n");
-	printf("*           0 : TURN OFF FEEDING MODE          *\n");
-	printf("*           1 : TURN ON FEEDING MODE           *\n");
-	printf("*           2 : FEED CATS JUST NOW             *\n");
-	printf("************************************************\n\n");
+	printf("************************************\n");
+	printf("***** INPUT '1' TO FEED CATS!! *****\n");
+	printf("************************************\n");
 	
 	int flag = 0;
 	while (ros::ok()) // Keep spinning loop until user presses Ctrl+C
@@ -50,45 +38,28 @@ int main(int argc, char **argv)
 		
 		printf("[input] : ");
 		scanf("%d",&flag);
-		printf("f : %d\n",flag);
+		printf("--- f : %d\n",flag);
 		
-		// init value
-		if(flag == -1)
-			continue;
-
-		/* 0 : turn off mode */
-		if(flag == 0) {
-			printf("[cat_feeder/case_0] TURN OFF FEEDING MODE!!\n\n");
-			msg.data = case0.str();
-			pubFeed.publish(msg);
-		}
-		/* 1 : turn on mode */
-		else if(flag == 1) {
-			printf("[cat_feeder/case_1] TURN ON FEEDING MODE!!\n\n");
-			msg.data = case1.str();
-			pubFeed.publish(msg);
-		}
-		/* 2 : feed cats now */
-		else if(flag == 2) {
-			printf("[cat_feeder/case_2] FEED CATS NOW!!\n\n");
+		if(flag == 1) {
+			printf("[cat_feeder/main] FEED CATS!!!\n\n");
 			
+			//stop
 			baseCmd.linear.x = 0;
 			baseCmd.linear.y = 0;
 			baseCmd.angular.z = 0;
 			pubTeleop.publish(baseCmd);
 
 			//feed and wait
-			msg.data = s1.str();
 			pubFeed.publish(msg);
 			ros::Duration d3(1);
 			d3.sleep();
 		}
 		/* the others */
 		else
-			printf("\n***** PRESS NUMBER {0 1 2} TO CONTROL MODE!! *****\n\n");
+			printf("\n***** PRESS NUMBER '1' TO FEED CATS!! *****\n\n");
 
 		// init flag
-		flag = -1;
+		flag = 0;
 	}
 
 	return 0;
