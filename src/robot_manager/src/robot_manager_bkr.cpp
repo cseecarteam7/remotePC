@@ -23,8 +23,8 @@ using namespace std;
 #define ROTDEGREE toRadian(80)
 #define OBSTACLEDISTANCE 0.3
 #define OBDEGREE 30
-#define MIN(x,y) ((x)<(y)?(x):(y))
-#define MAX(x,y) ((x)>(y)?(x):(y))
+//#define MIN(x,y) ((x)<(y)?(x):(y))
+//#define MAX(x,y) ((x)>(y)?(x):(y))
 
 boost::mutex mutex[2];
 nav_msgs::Odometry g_odom;
@@ -213,7 +213,7 @@ convertScan2XYZs(sensor_msgs::LaserScan& lrfScan, vector<Vec3d> &XYZs, double &a
 		//rangeC(10 ~ 30)
 		if(  OBDEGREE < i && i <= OBDEGREE*3){
 			if(!isinf(lrfScan.ranges[i])){
-				avgC += lrfScan.rages[i];
+				avgC += lrfScan.ranges[i];
 				obstacle_cntC++;
 			}
 		}
