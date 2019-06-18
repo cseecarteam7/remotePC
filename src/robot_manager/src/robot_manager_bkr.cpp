@@ -458,16 +458,21 @@ void automove(double avgA, double avgB, double avgC,  ros::Publisher &pubTeleop)
 		//Turning 180
 		if(avg_max == avgA){
 			deg = toRadian(180);
+			printf("flag A A A A########\n");
 		}
 		else if(avg_min == avgC){
 			deg = ROTDEGREE;
+			printf("flag C C C C TURN LEFT #######\n");
 		}
-		else
+		else{
 			deg = -ROTDEGREE;
+			printf("flag BBBBBB TURN RIGHT ######\n");
+		}
+		
 		tf::Transform currentTransformation = getCurrentTransformation();
 		doRotation(pubTeleop, currentTransformation, deg, 1.3);		
 		obstacle_flag = false;
-
+		printf("TURNING OVER......... sugo yum....\n");
 		//go forward
 		baseCmd.linear.x = 0.05;
 		baseCmd.linear.y = 0;
