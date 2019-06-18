@@ -196,21 +196,21 @@ convertScan2XYZs(sensor_msgs::LaserScan& lrfScan, vector<Vec3d> &XYZs, double &a
 			double dAngle = lrfScan.angle_min + i * lrfScan.angle_increment;
 			XYZs[i] = Vec3d(dRange*cos(dAngle), dRange*sin(dAngle), 0.);
 		}
-		//rangeA(-10~10)
+		//rangeA(middle)
 		if(i <= OBDEGREE || i >= 360-OBDEGREE){
 			if(!isinf(lrfScan.ranges[i])){
 				avgA += lrfScan.ranges[i];
 				obstacle_cntA++;
 			}
 		}
-		//rangeB(-30~-10)
+		//rangeB(right)
 		if( ((360-(OBDEGREE*3)) <= i) && (i<= 360-OBDEGREE )){
 			if(!isinf(lrfScan.ranges[i])){
 				avgB += lrfScan.ranges[i];
 				obstacle_cntB++;
 			}
 		}
-		//rangeC(10 ~ 30)
+		//rangeC(left)
 		if(  OBDEGREE < i && i <= OBDEGREE*3){
 			if(!isinf(lrfScan.ranges[i])){
 				avgC += lrfScan.ranges[i];
@@ -457,13 +457,17 @@ void automove(double avgA, double avgB, double avgC,  ros::Publisher &pubTeleop)
 	*/
 		//Turning 120
 		if(avg_max == avgA){
-			deg = toRadian(120);
+			deg = toRadian(150);
 			printf("flag A A A A########\n");
 		}
-		else if(avg_min == avgC){
+
+		//range C is left...
+		//it means your right side close, so you should turn left. 
+		else if(avg_max == avgC){
 			deg = ROTDEGREE;
 			printf("flag C C C C TURN LEFT #######\n");
 		}
+		//it means your left side is close, so you should turn right
 		else{
 			deg = -ROTDEGREE;
 			printf("flag BBBBBB TURN RIGHT ######\n");
