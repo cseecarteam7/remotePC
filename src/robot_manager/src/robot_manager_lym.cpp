@@ -14,6 +14,7 @@
 #include <time.h>
 #include <std_msgs/String.h>
 #include <sstream>
+#include <math.h>
 
 using namespace cv;
 using namespace std;
@@ -400,7 +401,7 @@ void shakeBody(ros::Publisher &pubTeleop, double dRotation, double dRotationSpee
 }
 
 
-void automove(double avg, ros::Publisher &pubTeleop, bool stuck_flag) 
+void automove(double avg, ros::Publisher &pubTeleop, bool &stuck_flag) 
 {
 	bool obstacle_flag = false;
 	geometry_msgs::Twist baseCmd;
@@ -584,6 +585,7 @@ int main(int argc, char **argv)
 	odom_after = odom;
 	ros::Time timestamp_after = odom_after.header.stamp;
 	
+	//ros::Time timestamp = odom.header.stamp;
 	
 	
 	int cnt = 0;
@@ -591,7 +593,32 @@ int main(int argc, char **argv)
 		/* 1. Call callback methods: odomMsgCallback( ), scanMsgCallback( ), detecMsgCallback() */        
 		ros::spinOnce();
 
-		if((timestamp_before.sec < timestamp_after.sec) && abs(timestamp_after.sec - timestamp_before.sec) < 6){
+		//timestamp = odom.header.stamp;
+		printf("before secs: %d / after secs: %d\n", timestamp_before.sec, timestamp_after.sec);
+		if(timestamp_after.sec <= timestamp_before.sec){
+			odom_after = odom;
+			timestamp_after = odom_after.header.stamp;
+			printf("#### if 1111 ####\n");
+		}
+		else if( abs(timestamp_after.sec - timestamp_before.sec) < 20 ){
+			odom_after = odom;
+			timestamp_after = odom_after.header.stamp;
+			printf("#### else if 2222 ####\n");
+		}
+		else{
+			stuck_flag = comparePosition(odom_before, odom_after);
+
+			printf("#### else ####\n");
+
+			odom_before = odom;
+			timestamp_before = odom_before.header.stamp;
+
+			odom_after = odom;
+			timestamp_after = odom_after.header.stamp;
+		}
+
+
+/*		if((timestamp_before.sec < timestamp_after.sec) && abs(timestamp_after.sec - timestamp_before.sec) < 6){
 			odom_after = odom;
 			timestamp_after = odom_after.header.stamp;
 			printf("#### if 1111 ####\n");
@@ -612,10 +639,8 @@ int main(int argc, char **argv)
 			odom_after = odom;
 			timestamp_after = odom_after.header.stamp;
 		}
+*/
 
-
-
-	 	
 		/* 2. get info from odom and scan */
 		double avg = 0;
 		getInfoFromOdomScan(odom, scan, xyz, rpy, trajectory, laserScanXY, avg);
