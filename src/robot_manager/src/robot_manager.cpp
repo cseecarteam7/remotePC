@@ -525,12 +525,7 @@ int main(int argc, char **argv)
 
 	
 		/*3. feed cat*/
-		if(feedFlag == true) {
-
-			baseCmd.linear.x = 0;
-			baseCmd.linear.y = 0;
-			baseCmd.angular.z = 0;
-			pubTeleop.publish(baseCmd);		
+		if(feedFlag == true) {		
 	
 			printf("-------move back!-------\n\n");
 
@@ -558,7 +553,7 @@ int main(int argc, char **argv)
 			
 			tf::Transform currentTransformation;
 			currentTransformation = getCurrentTransformation();
-			double degree = toRadian(15);
+			double degree = toRadian(30);
 			doRotation(pubTeleop, currentTransformation, degree, 1.3);
 			printf("-----rotate publish-----\n\n");
 

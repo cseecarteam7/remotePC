@@ -12,12 +12,12 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-	ros::init(argc, argv, "cat_feeder"); // Initiate new ROS node named "talker"
+	ros::init(argc, argv, "cat_feeder");
 	ros::NodeHandle node;
-	ros::Publisher pubFeather = node.advertise<std_msgs::String>("/servo_motion", 10);
-	//ros::Publisher pubTeleop = node.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
+	ros::Publisher pubFeed = node.advertise<std_msgs::String>("/servo_motion", 10);
+	ros::Publisher pubTeleop = node.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
 	ros::Rate loop_rate(10);
-	//geometry_msgs::Twist baseCmd;
+	geometry_msgs::Twist baseCmd;
 	std_msgs::String msg;
 	std::stringstream ss;
 	ss << "1";
@@ -37,8 +37,14 @@ int main(int argc, char **argv)
 		if(flag == 1) {
 			/**/
 			printf("\n\n[cat_feeder/main] FEED CATS!\n");
-			pubFeather.publish(msg);
-			ros::Duration d3(3);
+			
+			baseCmd.linear.x = 0;
+			baseCmd.linear.y = 0;
+			baseCmd.angular.z = 0;
+			pubTeleop.publish(baseCmd);
+
+			pubFeed.publish(msg);
+			ros::Duration d3(1);
 			d3.sleep();
 		
 			/**/
