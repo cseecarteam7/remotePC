@@ -10,13 +10,6 @@
 #include <string>
 
 using namespace std;
-int flag = 0;
-
-void reqFeedMsgCallBack(const std_msgs::String::ConstPtr& msg)
-{
-	if(!strcmp(msg->data.c_str(),"1"))
-		flag = 2;
-}
 
 int main(int argc, char **argv)
 {
@@ -24,7 +17,6 @@ int main(int argc, char **argv)
 	ros::NodeHandle pubNode, subNode;
 	ros::Publisher pubFeed = pubNode.advertise<std_msgs::String>("/servo_motion", 10);
 	ros::Publisher pubTeleop = pubNode.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
-	ros::Subscriber subReqFeed = subNode.subscribe("/req_feed", 10, &reqFeedMsgCallBack);
 	ros::Rate loop_rate(10);
 	
 	geometry_msgs::Twist baseCmd;
@@ -48,7 +40,7 @@ int main(int argc, char **argv)
 	printf("*           2 : FEED CATS JUST NOW             *\n");
 	printf("************************************************\n\n");
 	
-	
+	int flag = 0;
 	while (ros::ok()) // Keep spinning loop until user presses Ctrl+C
 	{
 		//ROS_INFO("%s", msg.data.c_str());
