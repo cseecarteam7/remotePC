@@ -143,6 +143,7 @@ add_executable(robot_manager src/robot_manager.cpp)
 add_executable(cat_feeder src/cat_feeder.cpp)
 add_executable(robot_manager_bkr src/robot_manager_bkr.cpp)
 add_executable(robot_manager_lym src/robot_manager_lym.cpp)
+add_executable(robot_manager_ksh src/robot_manager_ksh.cpp)
 #add_executable(img_saver src/img_saver.cpp)
 
 ## Rename C++ executable without prefix
@@ -158,6 +159,7 @@ add_dependencies(robot_manager robot_manager_generate_mesages_cpp)
 add_dependencies(cat_feeder robot_manager_generate_mesages_cpp)
 add_dependencies(robot_manager_bkr robot_manager_generate_mesages_cpp)
 add_dependencies(robot_manager_lym robot_manager_generate_mesages_cpp)
+add_dependencies(robot_manager_ksh robot_manager_generate_mesages_cpp)
 #add_dependencies(img_saver robot_manager_generate_mesages_cpp)
 
 ## Specify libraries to link a library or executable target against
@@ -168,6 +170,7 @@ target_link_libraries(robot_manager ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 target_link_libraries(cat_feeder ${catkin_LIBRARIES})
 target_link_libraries(robot_manager_bkr ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 target_link_libraries(robot_manager_lym ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(robot_manager_ksh ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #target_link_libraries(img_saver ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 #############

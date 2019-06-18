@@ -496,7 +496,8 @@ int main(int argc, char **argv)
 	nav_msgs::Odometry odom;
 	sensor_msgs::LaserScan scan;
 	std_msgs::String flagmsg;
-	std::stringstream ss_flagmsg << "3";
+	std::stringstream ss_flagmsg;
+	ss_flagmsg << "3";
 	flagmsg.data = ss_flagmsg.str();
 
 	Mat display;
@@ -536,7 +537,8 @@ int main(int argc, char **argv)
 		// WHEN feeding mode running && obstable detected && cat detected
 		if(feedFlag == 1 && avg > 0 && avg < OBSTACLEDISTANCE && catDetectFlag == true) {
 			std_msgs::String reqmsg;
-			std::stringstream ss_reqmsg << "1";
+			std::stringstream ss_reqmsg;
+			ss_reqmsg << "1";
 			reqmsg.data = ss_reqmsg.str();
 			pubReqFeed.publish(reqmsg);
 		}

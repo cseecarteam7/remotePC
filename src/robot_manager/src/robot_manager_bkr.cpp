@@ -455,9 +455,9 @@ void automove(double avgA, double avgB, double avgC,  ros::Publisher &pubTeleop)
 		else
 			deg = -ROTDEGREE;
 	*/
-		//Turning 180
+		//Turning 120
 		if(avg_max == avgA){
-			deg = toRadian(180);
+			deg = toRadian(120);
 			printf("flag A A A A########\n");
 		}
 		else if(avg_min == avgC){

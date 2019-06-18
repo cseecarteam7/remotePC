@@ -21,10 +21,10 @@ void reqFeedMsgCallBack(const std_msgs::String::ConstPtr& msg)
 int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "cat_feeder");
-	ros::NodeHandle node;
-	ros::Publisher pubFeed = node.advertise<std_msgs::String>("/servo_motion", 10);
-	ros::Publisher pubTeleop = node.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
-	ros::Subscriber subReqFeed = nhs.subscribe("/req_feed", 10, &reqFeedMsgCallBack);
+	ros::NodeHandle pubNode, subNode;
+	ros::Publisher pubFeed = pubNode.advertise<std_msgs::String>("/servo_motion", 10);
+	ros::Publisher pubTeleop = pubNode.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
+	ros::Subscriber subReqFeed = subNode.subscribe("/req_feed", 10, &reqFeedMsgCallBack);
 	ros::Rate loop_rate(10);
 	
 	geometry_msgs::Twist baseCmd;
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 		ros::spinOnce(); // Need to call this function often to allow ROS to process incoming messages
 		loop_rate.sleep(); // Sleep for the rest of the cycle, to enforce the loop rate
 		
-		printf("[input] : ")
+		printf("[input] : ");
 		scanf("%d",&flag);
 		printf("f : %d\n",flag);
 		
