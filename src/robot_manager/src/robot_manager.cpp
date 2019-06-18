@@ -526,29 +526,60 @@ int main(int argc, char **argv)
 	
 		/*3. feed cat*/
 		if(feedFlag == true) {
+
+			baseCmd.linear.x = 0;
+			baseCmd.linear.y = 0;
+			baseCmd.angular.z = 0;
+			pubTeleop.publish(baseCmd);		
+	
 			printf("-------move back!-------\n\n");
 
-			baseCmd.linear.x = -0.1;
+			ros::Time start = ros::Time::now();
+			ros::Rate loopRate(1000.0);
+			while(ros::Time::now() - start < ros::Duration(2.0)){
+				baseCmd.linear.x = -0.05;
+				baseCmd.linear.y = 0;
+				baseCmd.angular.z = 0;
+				pubTeleop.publish(baseCmd);
+				ros::spinOnce();
+				loopRate.sleep();
+			}
+			
+			printf("-----x = -0.05 publish-----\n\n");
+
+			//ros::Duration d1(1);
+			//d1.sleep();
+			baseCmd.linear.x = 0;
 			baseCmd.linear.y = 0;
 			baseCmd.angular.z = 0;
 			pubTeleop.publish(baseCmd);
-
-			ros::Duration d1(1);
-			d1.sleep();
-			baseCmd.linear.x = 0;
+			printf("-----x = 0 publish-----\n\n");
+			
 			
 			tf::Transform currentTransformation;
 			currentTransformation = getCurrentTransformation();
-			doRotation(pubTeleop, currentTransformation, toRadian(30), 1.5);
-			pubTeleop.publish(baseCmd);
+			double degree = toRadian(15);
+			doRotation(pubTeleop, currentTransformation, degree, 1.3);
+			printf("-----rotate publish-----\n\n");
 
 			feedFlag = false;
 		}
 
 
 		/* 4. when cat detected, shake body or feather.*/
-		if(catDetectFlag == false)
-			automove(avg, pubTeleop);
+		if(catDetectFlag == false){
+			//if (feedFlag == false){
+				automove(avg, pubTeleop);
+				printf("##### feedFlag == false #######\n\n");
+			//}
+			/*else{
+				baseCmd.linear.x = 0;
+				baseCmd.linear.y = 0;
+				baseCmd.angular.z = 0;
+				pubTeleop.publish(baseCmd);
+				printf("##### feedFlag == true #######\n\n");
+			}*/
+		}
 		else if(catDetectFlag == true) {
 
 			baseCmd.linear.x = 0;
