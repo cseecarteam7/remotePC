@@ -29,6 +29,7 @@ sensor_msgs::LaserScan g_scan;
 
 bool catDetectFlag = false;
 int feedFlag = -1;
+int autoFeedFlag = -1;
 
 
 	template<typename T>
@@ -71,12 +72,12 @@ void feedMsgCallback(const std_msgs::String::ConstPtr& msg)
 	//turn off msg
 	if(!strcmp(msg->data.c_str(),"0")) {
 		printf("\n[robot_manager/feedMsgCallback] TURN OFF FEEDING MODE!\n");
-		feedFlag = 0;
+		autoFeedFlag = 0;
 	}
 	//turn on msg
 	else if(!strcmp(msg->data.c_str(),"1")) {
 		printf("\n[robot_manager/feedMsgCallback] TURN ON FEEDING MODE!\n");
-		feedFlag = 1;
+		autoFeedFlag = 1;
 	}
 	//feeding msg
 	else if(!strcmp(msg->data.c_str(),"2")) {
@@ -535,7 +536,7 @@ int main(int argc, char **argv)
 
 		/* 3. if feeding mode turned on, conditionaly request to cat_feeder */
 		// WHEN feeding mode running && obstable detected && cat detected
-		if(feedFlag == 1 && avg > 0 && avg < OBSTACLEDISTANCE && catDetectFlag == true) {
+		if(autoFeedFlag == 1 && avg > 0 && avg < OBSTACLEDISTANCE && catDetectFlag == true) {
 			printf("\n**********************\n [robot_manager/main]\n CAT APPROACH --> AUTO FEEDING \n **********************\n");
 
 			baseCmd.linear.x = 0;
@@ -551,6 +552,8 @@ int main(int argc, char **argv)
 			pubFeed.publish(feedmsg);
 			ros::Duration d3(1);
 			d3.sleep();
+
+			feedFlag = 2;
 		}
 	
 
@@ -594,7 +597,7 @@ int main(int argc, char **argv)
 		if(catDetectFlag == false){
 			automove(avg, pubTeleop);
 		}
-		else if(catDetectFlag == true && feedFlag == 0) {
+		else if(catDetectFlag == true && autoFeedFlag == 0) {
 
 			// stop first
 			baseCmd.linear.x = 0;

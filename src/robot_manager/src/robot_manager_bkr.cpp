@@ -20,7 +20,7 @@ using namespace std;
 
 #define toRadian(degree)	((degree) * (M_PI / 180.))
 #define toDegree(radian)	((radian) * (180. / M_PI))
-#define ROTDEGREE toRadian(80)
+#define ROTDEGREE toRadian(60)
 #define OBSTACLEDISTANCE 0.3
 #define OBDEGREE 30
 //#define MIN(x,y) ((x)<(y)?(x):(y))

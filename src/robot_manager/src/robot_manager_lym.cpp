@@ -600,7 +600,7 @@ int main(int argc, char **argv)
 			timestamp_after = odom_after.header.stamp;
 			printf("#### if 1111 ####\n");
 		}
-		else if( abs(timestamp_after.sec - timestamp_before.sec) < 20 ){
+		else if( abs(timestamp_after.sec - timestamp_before.sec) < 10 ){
 			odom_after = odom;
 			timestamp_after = odom_after.header.stamp;
 			printf("#### else if 2222 ####\n");

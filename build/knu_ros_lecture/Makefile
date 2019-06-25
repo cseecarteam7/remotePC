@@ -56,39 +56,6 @@ CMAKE_BINARY_DIR = /home/sunny/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -99,6 +66,27 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -122,16 +110,28 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : test/fast
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,6 +166,51 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/rule
+.PHONY : knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/rule
+
+# Convenience name for target.
+turtlebot_lidar_avg: knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/rule
+
+.PHONY : turtlebot_lidar_avg
+
+# fast build rule for target.
+turtlebot_lidar_avg/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/build.make knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/build
+.PHONY : turtlebot_lidar_avg/fast
+
+# Convenience name for target.
+knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/rule
+.PHONY : knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/rule
+
+# Convenience name for target.
+turtle_auto_move: knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/rule
+
+.PHONY : turtle_auto_move
+
+# fast build rule for target.
+turtle_auto_move/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/build.make knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/build
+.PHONY : turtle_auto_move/fast
+
+# Convenience name for target.
+knu_ros_lecture/CMakeFiles/HW02_bkr.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 knu_ros_lecture/CMakeFiles/HW02_bkr.dir/rule
+.PHONY : knu_ros_lecture/CMakeFiles/HW02_bkr.dir/rule
+
+# Convenience name for target.
+HW02_bkr: knu_ros_lecture/CMakeFiles/HW02_bkr.dir/rule
+
+.PHONY : HW02_bkr
+
+# fast build rule for target.
+HW02_bkr/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/HW02_bkr.dir/build.make knu_ros_lecture/CMakeFiles/HW02_bkr.dir/build
+.PHONY : HW02_bkr/fast
+
+# Convenience name for target.
 knu_ros_lecture/CMakeFiles/talker.dir/rule:
 	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 knu_ros_lecture/CMakeFiles/talker.dir/rule
 .PHONY : knu_ros_lecture/CMakeFiles/talker.dir/rule
@@ -179,6 +224,33 @@ talker: knu_ros_lecture/CMakeFiles/talker.dir/rule
 talker/fast:
 	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/talker.dir/build.make knu_ros_lecture/CMakeFiles/talker.dir/build
 .PHONY : talker/fast
+
+src/HW02_bkr.o: src/HW02_bkr.cpp.o
+
+.PHONY : src/HW02_bkr.o
+
+# target to build an object file
+src/HW02_bkr.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/HW02_bkr.dir/build.make knu_ros_lecture/CMakeFiles/HW02_bkr.dir/src/HW02_bkr.cpp.o
+.PHONY : src/HW02_bkr.cpp.o
+
+src/HW02_bkr.i: src/HW02_bkr.cpp.i
+
+.PHONY : src/HW02_bkr.i
+
+# target to preprocess a source file
+src/HW02_bkr.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/HW02_bkr.dir/build.make knu_ros_lecture/CMakeFiles/HW02_bkr.dir/src/HW02_bkr.cpp.i
+.PHONY : src/HW02_bkr.cpp.i
+
+src/HW02_bkr.s: src/HW02_bkr.cpp.s
+
+.PHONY : src/HW02_bkr.s
+
+# target to generate assembly for a file
+src/HW02_bkr.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/HW02_bkr.dir/build.make knu_ros_lecture/CMakeFiles/HW02_bkr.dir/src/HW02_bkr.cpp.s
+.PHONY : src/HW02_bkr.cpp.s
 
 src/talker.o: src/talker.cpp.o
 
@@ -207,23 +279,89 @@ src/talker.cpp.s:
 	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/talker.dir/build.make knu_ros_lecture/CMakeFiles/talker.dir/src/talker.cpp.s
 .PHONY : src/talker.cpp.s
 
+src/turtle_auto_move.o: src/turtle_auto_move.cpp.o
+
+.PHONY : src/turtle_auto_move.o
+
+# target to build an object file
+src/turtle_auto_move.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/build.make knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/src/turtle_auto_move.cpp.o
+.PHONY : src/turtle_auto_move.cpp.o
+
+src/turtle_auto_move.i: src/turtle_auto_move.cpp.i
+
+.PHONY : src/turtle_auto_move.i
+
+# target to preprocess a source file
+src/turtle_auto_move.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/build.make knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/src/turtle_auto_move.cpp.i
+.PHONY : src/turtle_auto_move.cpp.i
+
+src/turtle_auto_move.s: src/turtle_auto_move.cpp.s
+
+.PHONY : src/turtle_auto_move.s
+
+# target to generate assembly for a file
+src/turtle_auto_move.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/build.make knu_ros_lecture/CMakeFiles/turtle_auto_move.dir/src/turtle_auto_move.cpp.s
+.PHONY : src/turtle_auto_move.cpp.s
+
+src/turtlebot_lidar_avg.o: src/turtlebot_lidar_avg.cpp.o
+
+.PHONY : src/turtlebot_lidar_avg.o
+
+# target to build an object file
+src/turtlebot_lidar_avg.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/build.make knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/src/turtlebot_lidar_avg.cpp.o
+.PHONY : src/turtlebot_lidar_avg.cpp.o
+
+src/turtlebot_lidar_avg.i: src/turtlebot_lidar_avg.cpp.i
+
+.PHONY : src/turtlebot_lidar_avg.i
+
+# target to preprocess a source file
+src/turtlebot_lidar_avg.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/build.make knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/src/turtlebot_lidar_avg.cpp.i
+.PHONY : src/turtlebot_lidar_avg.cpp.i
+
+src/turtlebot_lidar_avg.s: src/turtlebot_lidar_avg.cpp.s
+
+.PHONY : src/turtlebot_lidar_avg.s
+
+# target to generate assembly for a file
+src/turtlebot_lidar_avg.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/build.make knu_ros_lecture/CMakeFiles/turtlebot_lidar_avg.dir/src/turtlebot_lidar_avg.cpp.s
+.PHONY : src/turtlebot_lidar_avg.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... list_install_components"
-	@echo "... install"
-	@echo "... rebuild_cache"
+	@echo "... turtlebot_lidar_avg"
 	@echo "... edit_cache"
+	@echo "... turtle_auto_move"
+	@echo "... HW02_bkr"
+	@echo "... test"
 	@echo "... talker"
+	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... test"
+	@echo "... rebuild_cache"
+	@echo "... install"
+	@echo "... src/HW02_bkr.o"
+	@echo "... src/HW02_bkr.i"
+	@echo "... src/HW02_bkr.s"
 	@echo "... src/talker.o"
 	@echo "... src/talker.i"
 	@echo "... src/talker.s"
+	@echo "... src/turtle_auto_move.o"
+	@echo "... src/turtle_auto_move.i"
+	@echo "... src/turtle_auto_move.s"
+	@echo "... src/turtlebot_lidar_avg.o"
+	@echo "... src/turtlebot_lidar_avg.i"
+	@echo "... src/turtlebot_lidar_avg.s"
 .PHONY : help
 
 

@@ -93,12 +93,16 @@ talker_EXTERNAL_OBJECTS =
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/libroscpp.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/libcv_bridge.so
+/home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
+/home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
+/home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgcodecs3.so.3.3.1
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/librosconsole.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/libxmlrpcpp.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/libroscpp_serialization.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/librostime.so
 /home/sunny/catkin_ws/devel/lib/knu_ros_lecture/talker: /opt/ros/kinetic/lib/libcpp_common.so

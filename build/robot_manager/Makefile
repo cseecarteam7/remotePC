@@ -56,16 +56,6 @@ CMAKE_BINARY_DIR = /home/sunny/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -89,17 +79,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -110,6 +89,16 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -132,6 +121,17 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,19 +166,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-robot_manager/CMakeFiles/robot_manager.dir/rule:
-	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robot_manager/CMakeFiles/robot_manager.dir/rule
-.PHONY : robot_manager/CMakeFiles/robot_manager.dir/rule
+robot_manager/CMakeFiles/robot_manager_lym.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robot_manager/CMakeFiles/robot_manager_lym.dir/rule
+.PHONY : robot_manager/CMakeFiles/robot_manager_lym.dir/rule
 
 # Convenience name for target.
-robot_manager: robot_manager/CMakeFiles/robot_manager.dir/rule
+robot_manager_lym: robot_manager/CMakeFiles/robot_manager_lym.dir/rule
 
-.PHONY : robot_manager
+.PHONY : robot_manager_lym
 
 # fast build rule for target.
-robot_manager/fast:
-	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager.dir/build.make robot_manager/CMakeFiles/robot_manager.dir/build
-.PHONY : robot_manager/fast
+robot_manager_lym/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_lym.dir/build.make robot_manager/CMakeFiles/robot_manager_lym.dir/build
+.PHONY : robot_manager_lym/fast
+
+# Convenience name for target.
+robot_manager/CMakeFiles/robot_manager_bkr.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robot_manager/CMakeFiles/robot_manager_bkr.dir/rule
+.PHONY : robot_manager/CMakeFiles/robot_manager_bkr.dir/rule
+
+# Convenience name for target.
+robot_manager_bkr: robot_manager/CMakeFiles/robot_manager_bkr.dir/rule
+
+.PHONY : robot_manager_bkr
+
+# fast build rule for target.
+robot_manager_bkr/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_bkr.dir/build.make robot_manager/CMakeFiles/robot_manager_bkr.dir/build
+.PHONY : robot_manager_bkr/fast
 
 # Convenience name for target.
 robot_manager/CMakeFiles/cat_feeder.dir/rule:
@@ -194,6 +209,51 @@ cat_feeder: robot_manager/CMakeFiles/cat_feeder.dir/rule
 cat_feeder/fast:
 	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/cat_feeder.dir/build.make robot_manager/CMakeFiles/cat_feeder.dir/build
 .PHONY : cat_feeder/fast
+
+# Convenience name for target.
+robot_manager/CMakeFiles/robot_manager_ksh.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robot_manager/CMakeFiles/robot_manager_ksh.dir/rule
+.PHONY : robot_manager/CMakeFiles/robot_manager_ksh.dir/rule
+
+# Convenience name for target.
+robot_manager_ksh: robot_manager/CMakeFiles/robot_manager_ksh.dir/rule
+
+.PHONY : robot_manager_ksh
+
+# fast build rule for target.
+robot_manager_ksh/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_ksh.dir/build.make robot_manager/CMakeFiles/robot_manager_ksh.dir/build
+.PHONY : robot_manager_ksh/fast
+
+# Convenience name for target.
+robot_manager/CMakeFiles/robot_manager.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robot_manager/CMakeFiles/robot_manager.dir/rule
+.PHONY : robot_manager/CMakeFiles/robot_manager.dir/rule
+
+# Convenience name for target.
+robot_manager: robot_manager/CMakeFiles/robot_manager.dir/rule
+
+.PHONY : robot_manager
+
+# fast build rule for target.
+robot_manager/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager.dir/build.make robot_manager/CMakeFiles/robot_manager.dir/build
+.PHONY : robot_manager/fast
+
+# Convenience name for target.
+robot_manager/CMakeFiles/robot_manager_merge.dir/rule:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robot_manager/CMakeFiles/robot_manager_merge.dir/rule
+.PHONY : robot_manager/CMakeFiles/robot_manager_merge.dir/rule
+
+# Convenience name for target.
+robot_manager_merge: robot_manager/CMakeFiles/robot_manager_merge.dir/rule
+
+.PHONY : robot_manager_merge
+
+# fast build rule for target.
+robot_manager_merge/fast:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_merge.dir/build.make robot_manager/CMakeFiles/robot_manager_merge.dir/build
+.PHONY : robot_manager_merge/fast
 
 src/cat_feeder.o: src/cat_feeder.cpp.o
 
@@ -249,27 +309,151 @@ src/robot_manager.cpp.s:
 	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager.dir/build.make robot_manager/CMakeFiles/robot_manager.dir/src/robot_manager.cpp.s
 .PHONY : src/robot_manager.cpp.s
 
+src/robot_manager_bkr.o: src/robot_manager_bkr.cpp.o
+
+.PHONY : src/robot_manager_bkr.o
+
+# target to build an object file
+src/robot_manager_bkr.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_bkr.dir/build.make robot_manager/CMakeFiles/robot_manager_bkr.dir/src/robot_manager_bkr.cpp.o
+.PHONY : src/robot_manager_bkr.cpp.o
+
+src/robot_manager_bkr.i: src/robot_manager_bkr.cpp.i
+
+.PHONY : src/robot_manager_bkr.i
+
+# target to preprocess a source file
+src/robot_manager_bkr.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_bkr.dir/build.make robot_manager/CMakeFiles/robot_manager_bkr.dir/src/robot_manager_bkr.cpp.i
+.PHONY : src/robot_manager_bkr.cpp.i
+
+src/robot_manager_bkr.s: src/robot_manager_bkr.cpp.s
+
+.PHONY : src/robot_manager_bkr.s
+
+# target to generate assembly for a file
+src/robot_manager_bkr.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_bkr.dir/build.make robot_manager/CMakeFiles/robot_manager_bkr.dir/src/robot_manager_bkr.cpp.s
+.PHONY : src/robot_manager_bkr.cpp.s
+
+src/robot_manager_ksh.o: src/robot_manager_ksh.cpp.o
+
+.PHONY : src/robot_manager_ksh.o
+
+# target to build an object file
+src/robot_manager_ksh.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_ksh.dir/build.make robot_manager/CMakeFiles/robot_manager_ksh.dir/src/robot_manager_ksh.cpp.o
+.PHONY : src/robot_manager_ksh.cpp.o
+
+src/robot_manager_ksh.i: src/robot_manager_ksh.cpp.i
+
+.PHONY : src/robot_manager_ksh.i
+
+# target to preprocess a source file
+src/robot_manager_ksh.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_ksh.dir/build.make robot_manager/CMakeFiles/robot_manager_ksh.dir/src/robot_manager_ksh.cpp.i
+.PHONY : src/robot_manager_ksh.cpp.i
+
+src/robot_manager_ksh.s: src/robot_manager_ksh.cpp.s
+
+.PHONY : src/robot_manager_ksh.s
+
+# target to generate assembly for a file
+src/robot_manager_ksh.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_ksh.dir/build.make robot_manager/CMakeFiles/robot_manager_ksh.dir/src/robot_manager_ksh.cpp.s
+.PHONY : src/robot_manager_ksh.cpp.s
+
+src/robot_manager_lym.o: src/robot_manager_lym.cpp.o
+
+.PHONY : src/robot_manager_lym.o
+
+# target to build an object file
+src/robot_manager_lym.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_lym.dir/build.make robot_manager/CMakeFiles/robot_manager_lym.dir/src/robot_manager_lym.cpp.o
+.PHONY : src/robot_manager_lym.cpp.o
+
+src/robot_manager_lym.i: src/robot_manager_lym.cpp.i
+
+.PHONY : src/robot_manager_lym.i
+
+# target to preprocess a source file
+src/robot_manager_lym.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_lym.dir/build.make robot_manager/CMakeFiles/robot_manager_lym.dir/src/robot_manager_lym.cpp.i
+.PHONY : src/robot_manager_lym.cpp.i
+
+src/robot_manager_lym.s: src/robot_manager_lym.cpp.s
+
+.PHONY : src/robot_manager_lym.s
+
+# target to generate assembly for a file
+src/robot_manager_lym.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_lym.dir/build.make robot_manager/CMakeFiles/robot_manager_lym.dir/src/robot_manager_lym.cpp.s
+.PHONY : src/robot_manager_lym.cpp.s
+
+src/robot_manager_merge.o: src/robot_manager_merge.cpp.o
+
+.PHONY : src/robot_manager_merge.o
+
+# target to build an object file
+src/robot_manager_merge.cpp.o:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_merge.dir/build.make robot_manager/CMakeFiles/robot_manager_merge.dir/src/robot_manager_merge.cpp.o
+.PHONY : src/robot_manager_merge.cpp.o
+
+src/robot_manager_merge.i: src/robot_manager_merge.cpp.i
+
+.PHONY : src/robot_manager_merge.i
+
+# target to preprocess a source file
+src/robot_manager_merge.cpp.i:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_merge.dir/build.make robot_manager/CMakeFiles/robot_manager_merge.dir/src/robot_manager_merge.cpp.i
+.PHONY : src/robot_manager_merge.cpp.i
+
+src/robot_manager_merge.s: src/robot_manager_merge.cpp.s
+
+.PHONY : src/robot_manager_merge.s
+
+# target to generate assembly for a file
+src/robot_manager_merge.cpp.s:
+	cd /home/sunny/catkin_ws/build && $(MAKE) -f robot_manager/CMakeFiles/robot_manager_merge.dir/build.make robot_manager/CMakeFiles/robot_manager_merge.dir/src/robot_manager_merge.cpp.s
+.PHONY : src/robot_manager_merge.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... list_install_components"
 	@echo "... install"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... edit_cache"
-	@echo "... robot_manager"
+	@echo "... robot_manager_lym"
+	@echo "... robot_manager_bkr"
 	@echo "... cat_feeder"
+	@echo "... robot_manager_ksh"
+	@echo "... robot_manager"
+	@echo "... edit_cache"
+	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... robot_manager_merge"
+	@echo "... test"
 	@echo "... src/cat_feeder.o"
 	@echo "... src/cat_feeder.i"
 	@echo "... src/cat_feeder.s"
 	@echo "... src/robot_manager.o"
 	@echo "... src/robot_manager.i"
 	@echo "... src/robot_manager.s"
+	@echo "... src/robot_manager_bkr.o"
+	@echo "... src/robot_manager_bkr.i"
+	@echo "... src/robot_manager_bkr.s"
+	@echo "... src/robot_manager_ksh.o"
+	@echo "... src/robot_manager_ksh.i"
+	@echo "... src/robot_manager_ksh.s"
+	@echo "... src/robot_manager_lym.o"
+	@echo "... src/robot_manager_lym.i"
+	@echo "... src/robot_manager_lym.s"
+	@echo "... src/robot_manager_merge.o"
+	@echo "... src/robot_manager_merge.i"
+	@echo "... src/robot_manager_merge.s"
 .PHONY : help
 
 

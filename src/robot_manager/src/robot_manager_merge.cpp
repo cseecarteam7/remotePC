@@ -72,7 +72,7 @@ void detectMsgCallback(const std_msgs::String::ConstPtr& msg)
 
 void feedMsgCallback(const std_msgs::String::ConstPtr& msg)
 {
-	if(!strcmp(msg->data.c_str(),"1")) {
+	if(!strcmp(msg->data.c_str(),"2")) {
 		printf("\n[robot_manager/cat_feeder] FEED CATS!\n");
 		ros::Duration feeddur(3);
 		feeddur.sleep();
@@ -569,7 +569,7 @@ void drawImage(Mat &display, nav_msgs::Odometry &odom, Vec3d &xyz, Vec3d &rpy, v
 	flip(display, display, 1);  // 수직방향 반전
 
 	// 5-4. 영상 출력
-	imshow("KNU ROS Lecture >> turtle_pose_lidar_avg", display);
+	//imshow("KNU ROS Lecture >> turtle_pose_lidar_avg", display);
 	//printOdometryInfo(odom);
 
 }
@@ -643,7 +643,7 @@ int main(int argc, char **argv)
             timestamp_after = odom_after.header.stamp;
             printf("#### if 1111 ####\n");
         }
-        else if( abs(timestamp_after.sec - timestamp_before.sec) < 20 ){
+        else if( abs(timestamp_after.sec - timestamp_before.sec) < 15 ){
             odom_after = odom;
             timestamp_after = odom_after.header.stamp;
             printf("#### else if 2222 ####\n");
